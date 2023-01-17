@@ -128,3 +128,5 @@ disabled = false
 [line_break]
 disabled = true
 
+[battery]
+disabled = true
