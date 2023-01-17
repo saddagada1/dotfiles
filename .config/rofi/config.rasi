@@ -1,0 +1,11 @@
+configuration {
+  display-run: "Run:";
+  display-drun: "Applications:";
+  display-window: "Windows:";
+  display-calc: "Calc:";
+  modi: "window,run,drun,calc";
+}
+
+@theme "~/.config/rofi/theme.rasi"
+
+

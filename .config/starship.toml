@@ -1,0 +1,130 @@
+
+format = "$username$hostname$all$directory$git_branch$git_status$cmd_duration$sudo$shell$time[\n💀\n]()$status$character"
+
+## FIRST LINE/ROW: Info & Status
+# First param ─┌
+[username]
+format = " [╭─ $user]($style)🪐"
+style_user = "bold yellow"
+style_root = "bold yellow"
+show_always = true
+
+# Second param
+[hostname]
+format = "[$hostname]($style) "
+style = "bold yellow"
+trim_at = "-"
+ssh_only = false
+disabled = false
+
+# Third param
+[directory]
+format = "in [$path]($style)[$read_only]($read_only_style)"
+style = "bold green"
+read_only = " 🔐"
+truncation_length = 0
+truncate_to_repo = true
+truncation_symbol = "repo: "
+
+# Before all the version info (python, nodejs, php, etc.)
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style))'
+conflicted = '🏳'
+ahead = '🏎💨'
+behind = '😰'
+diverged = '😵'
+up_to_date = '✓'
+untracked = '🤷'
+stashed = '📦'
+modified = '📝'
+staged = '[++\($count\)](green)'
+renamed = '👅'
+deleted = '🗑'
+
+# Last param in the first line/row
+[cmd_duration]
+min_time = 1
+format = " took [$duration](bold red) [─](bold yellow)"
+show_notifications = true
+min_time_to_notify = 300000
+disabled = false
+
+[fill]
+symbol = '─'
+style = 'bold yellow'
+
+## SECOND LINE/ROW: Prompt
+# Somethere at the beginning
+
+# Prompt: optional param 1
+[time]
+format = " at ⌚ [$time](bold red)[ ─❯](bold yellow)"
+time_format = "%T"
+disabled = true
+
+# Prompt: param 2 └─
+[character]
+success_symbol = " [╰─❯](bold yellow)"
+error_symbol = "[─❯](bold yellow)"
+
+# SYMBOLS
+[status]
+symbol = "🔴"
+format = '[ [╰─](bold yellow)\[$symbol$status_common_meaning$status_signal_name$status_maybe_int\]]($style)'
+map_symbol = true
+disabled = false
+
+[aws]
+symbol = '🅰 '
+
+[azure]
+symbol = 'ﴃ '
+
+[bun]
+symbol = '🍞 '
+
+[c]
+symbol = '🇨  '
+
+[docker_context]
+symbol = "🐋 "
+
+[git_branch]
+format = ' on [$symbol$branch(:$remote_branch)]($style) '
+symbol = "🌱 "
+
+[golang]
+symbol = "🐹 "
+
+[java]
+symbol = "☕ "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = "📦 "
+
+[python]
+symbol = "🐍 "
+
+[rust]
+symbol = "🦀 "
+
+[shell]
+format = " on [$indicator ─❯]($style)"
+bash_indicator = "🐧"
+fish_indicator = "🐠"
+zsh_indicator = "🦓"
+unknown_indicator = '👽'
+style = "bold yellow"
+disabled = false
+
+[sudo]
+format = " as [$symbol]($style)"
+symbol = "🧙"
+disabled = false
+
+[line_break]
+disabled = true
+

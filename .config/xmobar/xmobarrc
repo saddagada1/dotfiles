@@ -1,0 +1,24 @@
+Config { font = "xft:Mononoki:weight=bold:pixelsize=20:antialias=true:hinting=true"
+	, additionalFonts = [ "xft:Font Awesome 6 Free Solid:pixelsize=20", "xft:Font Awesome 6 Brands:pixelsize=20" ] 
+  , bgColor = "#1a1b26"
+  , fgColor = "#a9b1d6"
+  , alpha = 204
+  , position = Static { xpos = 16 , ypos = 16, width = 2530, height = 60 }
+	, iconRoot = ".xmonad/xpm/"
+	, iconOffset = 28
+        , textOffset = 36
+        , commands = [
+                          Run Cpu ["-t", "<fc=#e0af68><fn=1>\xf108</fn> <total></fc>"] 20
+                        , Run Memory ["-t", "<fc=#9ece6a><fn=1>\xf233</fn> <usedratio></fc>"] 20
+                        , Run DiskU [("/", "<fc=#449dab><fn=1>\xf0c7</fn> <free>b</fc>")] [] 36000
+			                  , Run Battery ["-t", "<acstatus><leftbar> <left>", "--Low", "10", "--High", "50", "--low", "#f7768e", "--normal", "#e0af68", "--high", "#9ece6a", "--bback", "\x259A", "--bfore", "\x259A", "--", "-o", "", "-O", "<fn=1>\xf1e6</fn> ", "-i", "<fn=1>\xf0e7</fn> "] 20
+			                  , Run Wireless "" ["-t", "<fc=#ad8ee6><fn=1>\xf1eb</fn> <quality></fc>"] 20
+			                  , Run Alsa "default" "Master" ["-t", "<fc=#7aa2f7><fn=1>\xf028</fn> <volume></fc>"]
+			                  , Run Date "<fn=1>\xf073</fn> %a %b %_d %Y | <fn=1>\xf017</fn> %H:%M:%S" "date" 10
+                        , Run Com "echo" ["<fc=#f7768e><fn=1>\xf011</fn></fc>"] "powericon" 864000
+                        , Run UnsafeStdinReader
+                        ]
+        , sepChar = "%"
+        , alignSep = "}{"
+        , template = "<hspace=20/><action=`thunar`><icon=skulls.xpm/></action><hspace=20/>%UnsafeStdinReader%}<action=`feh --randomize --bg-fill ~/repos/wallpapers/*`>%date%</action>{<action=`alacritty -e htop`>%cpu%</action> | <action=`alacritty -e htop`>%memory%</action> | %disku% | <action=`alacritty -e alsamixer`>%alsa:default:Master%</action> | <action=`~/.local/bin/wifimenu`>%wi%</action> | %battery% | <action=`~/.local/bin/powermenu`>%powericon%</action><hspace=20/>"
+        }
